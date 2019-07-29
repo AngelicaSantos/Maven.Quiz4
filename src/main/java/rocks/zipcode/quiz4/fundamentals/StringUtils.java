@@ -5,54 +5,63 @@ package rocks.zipcode.quiz4.fundamentals;
  */
 public class StringUtils {
     public static Character getMiddleCharacter(String string) {
-        return null;
+
+        return string.charAt(string.length()/2);
     }
 
     public static String capitalizeMiddleCharacter(String str) {
-        return null;
+        char[] chars = str.toCharArray();
+        chars[str.length()/2] = Character.toUpperCase(chars[str.length()/2]);
+
+        return String.valueOf(chars);
     }
 
     public static String lowerCaseMiddleCharacter(String str) {
-        return null;
+        char[] chars = str.toCharArray();
+        chars[str.length()/2] = Character.toLowerCase(chars[str.length()/2]);
+
+        return String.valueOf(chars);
     }
 
     public static Boolean isIsogram(String str) {
-        return null;
+        char[] chars = str.toCharArray();
+        for(int i=0; i<str.length();i++){
+        int count =0;
+        char check = chars[i];
+            for(char other : chars) {
+                if(check == other) count++;
+            }
+            if(count > 1) return false;
+        }
+        return true;
     }
 
     public static Boolean hasDuplicateConsecutiveCharacters(String str) {
-        return null;
+        for (int i=0; i<str.length()-1;i++){
+            Character value1 = str.charAt(i);
+            Character value2 = str.charAt(i +1);
+
+            if(value1.equals(value2)) return true;
+        }
+        return false;
     }
 
     public static String removeConsecutiveDuplicateCharacters(String str) {
+
         return null;
     }
 
     public static String invertCasing(String str) {
 
-        String cas = "";
-
-        //get the char array from String
-        char[] charArray = str.toCharArray();
-
-        //process chars one by one
-        for (int i = 0; i < charArray.length; i++) {
-
-            //if char is uppercase, make it lower case
-            if (Character.isUpperCase(charArray[i])) {
-
-                charArray[i] = Character.toLowerCase(charArray[i]);
-
-            } else if (Character.isLowerCase(charArray[i])) {
-
-                charArray[i] = Character.toUpperCase(charArray[i]);
-
+        char[] chars = str.toCharArray();
+        for(int i = 0; i < chars.length; i++) {
+            if(Character.isLowerCase(chars[i])) {
+                chars[i] = Character.toUpperCase(chars[i]);
+            }
+            else {
+                chars[i] = Character.toLowerCase(chars[i]);
             }
         }
-        // now you need to convert the new  char into string
-        str = new String(charArray);
-        System.out.println(str);
-        return str;
+        return String.valueOf(chars);
     }
-
 }
